@@ -14,6 +14,10 @@ resource "aws_redshift_cluster" "this" {
   database_name      = "${var.cluster_database_name}"
   master_username    = "${var.cluster_master_username}"
   master_password    = "${var.cluster_master_password}"
+  
+  lifecycle {
+    ignore_changes = ["master_password"]  
+  }
 
   port = "${var.cluster_port}"
 
